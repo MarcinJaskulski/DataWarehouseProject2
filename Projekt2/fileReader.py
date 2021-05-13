@@ -47,7 +47,10 @@ def read_customer_info():
     with open('./zadanie_politechnika/cust-info.dat', encoding='ibm037') as fp:
         lines = chunk_string(fp.read(), 307)
         for line in lines:
+            # print(line.encode('ibm037').decode('utf-8'))
+            # print(line.encode('iso-8859-2'))
             rows.append(CustomerInfo(line))
+    # print(rows[193].show())
     return rows
 
 
