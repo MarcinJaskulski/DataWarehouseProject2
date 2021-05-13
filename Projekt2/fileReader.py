@@ -45,7 +45,14 @@ def read_b_transactions():
 def read_customer_info():
     rows = []
     with open('./zadanie_politechnika/cust-info.dat', encoding='ibm037') as fp:
-        lines = fp.read().encode('iso-8859-2')
+        lines = chunk_string(fp.read(), 307)
         for line in lines:
             rows.append(CustomerInfo(line))
+    return rows
+
+
+def chunk_string(str, length):
+    rows = []
+    for i in range(0, len(str), length):
+        rows.append(str[0+i:length+i])
     return rows

@@ -8,9 +8,9 @@ class CustomerInfo:
         self.voivodship = row[233:283].strip()
         self.postcode = int(row[283:288])
         self.est_income = int(row[288:296])
-        self.own_or_rent = int(row[296])
-        self.date = int(row[297:307])
+        self.own_or_rent = row[296]
+        self.date = row[297:307]
 
     def show(self):
-        print(f"CustomerInfo: {self.custid} {self.fname} {self.lname} {self.street_address} {self.district} "
+        print(f"CustomerInfo: {self.Id} {self.firstname} {self.lastname} {self.street_address} {self.district} "
               f"{self.voivodship} {self.postcode} {self.est_income} {self.own_or_rent} {self.date}")
