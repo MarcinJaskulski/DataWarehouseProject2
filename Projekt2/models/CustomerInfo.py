@@ -10,6 +10,8 @@ class CustomerInfo:
         self.est_income = int(row[288:296])
         self.own_or_rent = row[296]
         self.date = row[297:307]
+        if self.own_or_rent == "R":
+            self.est_income *= 0.5
 
     def show(self):
         print(f"CustomerInfo: {self.Id} {self.firstname} {self.lastname} {self.street_address} {self.district} "

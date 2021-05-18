@@ -4,7 +4,7 @@ from models.ATransaction import ATransaction
 from models.BCustomer import BCustomer
 from models.BTransaction import BTransaction
 from models.CustomerInfo import CustomerInfo
-import ebcdic
+
 
 def read_a_customers():
     rows = []
