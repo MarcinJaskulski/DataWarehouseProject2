@@ -5,7 +5,7 @@ from createDF import joinAData, joinBData, createDFCustomerInfo
 from createResult import createResultA, createResultB, createResultC
 
 # Zmiennne z zadania
-INCOME_THRESHOLD = 100000  # 200000 to za dużo i nic nie zostaje
+INCOME_THRESHOLD = 20000  # 200000 to za dużo i nic nie zostaje
 TRANSACTION_THRESHOLD = 500
 VIP_INCOME = 10900
 
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     res_b = createResultB(join_b_df, TRANSACTION_THRESHOLD)
 
     # filtrowanie customers info
-    res_c = createResultC(customer_info_df, INCOME_THRESHOLD)
+    res_c = createResultC(customer_info_df, INCOME_THRESHOLD, VIP_INCOME)
 
     concat = pd.concat([res_a, res_b, res_c])
     save_dat_file(concat, "result.dat")

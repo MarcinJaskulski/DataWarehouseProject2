@@ -18,7 +18,7 @@ class ATransaction:
         self.returnid = self.parse_to_int(row[45:54])
         self.reason = row[54:84].strip()
         if type(self.price) is int and type(self.quantity) is int:
-            self.value = self.price * self.quantity
+            self.value = self.price * self.quantity * (1 - self.discount)
         else:
             self.value = 0
 

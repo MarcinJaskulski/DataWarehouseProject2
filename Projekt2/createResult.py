@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 result_columns = [
@@ -61,7 +60,7 @@ def createResultB(join_b_df, TRANSACTION_THRESHOLD):
     return b_result[result_columns]
 
 
-def createResultC(customer_info_df, INCOME_THRESHOLD):
+def createResultC(customer_info_df, INCOME_THRESHOLD, VIP_INCOME):
     filter_customer_info = customer_info_df.loc[customer_info_df['est_income'] >= INCOME_THRESHOLD]
     filter_customer_info["source"] = "C"
     filter_customer_info["preferred"] = "2"
@@ -82,5 +81,9 @@ def createResultC(customer_info_df, INCOME_THRESHOLD):
         filter_customer_info.columns[11]: 'purchases',
     }
 
-    filter_customer_info =  filter_customer_info.rename(columns=mapping)
+    filter_customer_info = filter_customer_info.rename(columns=mapping)
+
+    vip_amount = filter_customer_info.loc[filter_customer_info['est_income'] >= VIP_INCOME].shape[0]
+    if vip_amount > 200:
+        filter_customer_info = filter_customer_info.loc[filter_customer_info['est_income'] >= VIP_INCOME].sort_values('est_income', ascending=False).head(vip_amount - 200)
     return filter_customer_info[result_columns]
